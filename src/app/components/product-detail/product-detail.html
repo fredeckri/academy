@@ -1,0 +1,54 @@
+<div class="container px-4 px-lg-5 my-5">
+  @if (isLoading) {
+  <div class="loading-container">
+    <div class="spinner"></div>
+    <p>{{textoLoading}}</p>
+  </div>
+  } @else { @if (product) {
+  <div class="row gx-4 gx-lg-5 align-items-center">
+    <div class="col-md-6">
+      <img class="card-img-top mb-5 mb-md-0 zoomed" [src]="product.imageUrl" [alt]="product.name" />
+    </div>
+    <div class="col-md-6">
+      @if (product.onSale) {
+      <div class="badge bg-danger mb-2">Promoção de {{ discountPercentage }}%</div>
+      }
+      <h1 class="display-5 fw-bolder">{{ product.name }}</h1>
+      <div class="fs-5 mb-3">
+        <!-- preço normal e com desconto -->
+        @if (product.onSale) {
+        <span class="text-muted text-decoration-line-through"
+          >R$ {{ product.price.toFixed(2) }}</span
+        >
+        <span>R$ {{ getDescontoProduto(product.price) | number : '1.2-2' }}</span>
+        } @else {
+        <span>R$ {{ product.price.toFixed(2) }}</span>
+        }
+      </div>
+      <p class="lead">{{ product.description }}</p>
+      <div class="d-flex align-items-center mb-4">
+        <span class="badge" [ngClass]="product.available ? 'bg-success' : 'bg-danger'">
+          {{ product.available ? 'Disponível' : 'Indisponível' }}
+        </span>
+      </div>
+      <div class="d-flex">
+        <button
+          (click)="adicionarAoCarrinho(product)"
+          class="btn btn-primary flex-shrink-0"
+          type="button"
+          [disabled]="!product.available"
+        >
+          <i class="bi-cart-fill me-1"></i>
+          Adicionar ao carrinho
+        </button>
+        <a class="btn btn-outline-dark ms-3" routerLink="/products">Voltar à lista</a>
+      </div>
+    </div>
+  </div>
+  } @else if (!product) {
+  <div class="text-center py-5">
+    <h2 class="d-none fw-bolder">{{ProductNot}}</h2>
+    <a class="btn btn-primary mt-3" routerLink="/products">Voltar para a Loja</a>
+  </div>
+  } }
+</div>

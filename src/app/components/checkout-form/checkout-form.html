@@ -1,0 +1,75 @@
+<div class="checkout-container">
+  <h2>Finalizar Compra</h2>
+
+  
+  @if (carrinhoEstaVazio) {
+  
+  <div class="carrinho-vazio text-center">
+    <p class="lead">Seu carrinho está vazio.</p>
+    <p>Adicione produtos antes de finalizar a compra.</p>
+    <a class="btn btn-primary mt-3" routerLink="/products">Voltar para a Loja</a>
+  </div>
+  } @else {
+  
+  <div>
+    <p>Por favor, preencha seus dados para concluir o pedido.</p>
+
+    <form [formGroup]="checkoutForm" (ngSubmit)="onSubmit()" novalidate>
+      
+      <div class="form-group">
+        <label for="nomeCompleto">Nome Completo</label>
+        <input type="text" id="nomeCompleto" formControlName="nomeCompleto" class="form-control" />
+        @if (nomeCompleto?.invalid && (nomeCompleto?.touched || submitted)) {
+        <div class="error-message">
+          @if (nomeCompleto?.errors?.['required']) {
+          <p>O nome completo é obrigatório.</p>
+          } @if (nomeCompleto?.errors?.['minlength']) {
+          <p>O nome deve ter no mínimo 5 caracteres.</p>
+          }
+        </div>
+        }
+      </div>
+
+      
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" formControlName="email" class="form-control" />
+        @if (email?.invalid && (email?.touched || submitted)) {
+        <div class="error-message">
+          @if (email?.errors?.['required']) {
+          <p>O e-mail é obrigatório.</p>
+          } @if (email?.errors?.['email']) {
+          <p>Por favor, insira um formato de e-mail válido.</p>
+          }
+        </div>
+        }
+      </div>
+
+      
+      <div class="form-group">
+        <label for="endereco">Endereço</label>
+        <textarea id="endereco" formControlName="endereco" class="form-control" rows="3"></textarea>
+        @if (endereco?.invalid && (endereco?.touched || submitted)) {
+        <div class="error-message">
+          @if (endereco?.errors?.['required']) {
+          <p>O endereço é obrigatório.</p>
+          } @if (endereco?.errors?.['minlength']) {
+          <p>O endereço deve ter no mínimo 10 caracteres.</p>
+          }
+        </div>
+        }
+      </div>
+
+      
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="checkoutForm.invalid || carrinhoEstaVazio"
+      >
+        Finalizar Compra
+      </button>
+    </form>
+    <a class="w-100 btn btn-secondary mt-3" routerLink="/products">Voltar para a Loja</a>
+  </div>
+  }
+</div>

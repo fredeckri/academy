@@ -1,0 +1,35 @@
+
+@if (!1) {
+<div class="card bg-light mb-5">
+  <div class="card-body">
+    <h5 class="card-title">Adicionar Novo Produto</h5>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label for="name" class="form-label">Nome do Produto</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Descrição</label>
+        <textarea class="form-control" id="description" formControlName="description"></textarea>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="price" class="form-label">Preço</label>
+          <input type="number" class="form-control" id="price" formControlName="price">
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="imageUrl" class="form-label">URL da Imagem</label>
+          <input type="text" class="form-control" id="imageUrl" formControlName="imageUrl">
+        </div>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="available" formControlName="available">
+        <label class="form-check-label" for="available">
+          Disponível
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="productForm.invalid">Adicionar Produto</button>
+    </form>
+  </div>
+</div>
+}
