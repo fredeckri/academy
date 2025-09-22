@@ -10,8 +10,7 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = 3000;
-// IMPORTANTE: Em produção, armazene este segredo em uma variável de ambiente (.env)
-const JWT_SECRET = `1425312456351s56a4sdpioiuoirwejroijosdfjpfasdkPOIIA(*#$&@#(*$@)(#$_)@#($)_#(@$))`;
+const JWT_SECRET = `testes(*#$&@#(*$@)(#$_)@#($)_#(@$))`;
 
 // --- Middlewares ---
 app.use(cors());
