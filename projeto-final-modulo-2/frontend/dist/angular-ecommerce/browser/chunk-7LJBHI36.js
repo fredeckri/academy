@@ -1,0 +1,1 @@
+import{B as e,j as o,m as r,sa as i}from"./chunk-KXOE7I45.js";var h=(()=>{class t{constructor(){this.isLoading=e(!1),this.translationService=r(i),this.showModal=()=>{console.error("Teste Global")}}static{this.\u0275fac=function(a){return new(a||t)}}static{this.\u0275prov=o({token:t,factory:t.\u0275fac,providedIn:"root"})}}return t})();export{h as a};
