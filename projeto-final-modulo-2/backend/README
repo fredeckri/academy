@@ -1,0 +1,43 @@
+****************************
+prototipo backend para Funcionalidades com Angular
+****************************
+
+API de E-commerce
+Esta é uma API simples criada com Node.js, Express e SQLite para servir um frontend de e-commerce.
+
+Funcionalidades
+Autenticação de usuários (Login/Registro).
+
+Gerenciamento de produtos (CRUD).
+
+Upload de imagens de produtos.
+
+Armazenamento de dados em um banco de dados SQLite.
+
+Executando o pj
+Pre-requisitos
+Node.js (versão 14 ou superior)
+
+npm 
+
+Passos
+Crie uma pasta para o backend ou server e salve os arquivos package.json e server.js dentro dela.
+
+Instale as dependências:
+Abra um terminal na pasta do backend e execute:
+
+npm install
+
+Inicie o servidor:
+Ainda no terminal, execute:
+
+npm start
+
+O servidor estará rodando em http://localhost:3000.
+
+Na primeira vez que o servidor for iniciado, um banco de dados database.db(se não estiver presente), criará as tabelas necessárias, adicionará um usuário administrador padrão e buscará produtos da FakeStoreAPI para popular o banco de dados.
+
+Usuário Administrador Padrão
+Email: rick@exemplo
+
+Senha: rick@123

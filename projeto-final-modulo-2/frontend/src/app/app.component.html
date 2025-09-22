@@ -1,0 +1,57 @@
+@if (globalState.isLoading()) {
+<div class="loading-spinner">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+}
+<app-header />
+<main class="container my-4">
+  <router-outlet />
+</main>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="confirmationModal" tabindex="-1" #confirmationModal>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ modalData().title }}</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">{{ modalData().body }}</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">{{ t('cancel') }}</button>
+        <button type="button" class="btn btn-primary" (click)="confirmModal()">{{ t('confirm') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Rodapé -->
+<footer class="footer mt-auto py-3 bg-dark text-white">
+  <div class="container text-center">
+    <div class="tech-icons mb-3">
+      <a href="https://angular.dev/" target="_blank" rel="noopener noreferrer" [title]="t('angularLink')">
+        <img src="https://angular.io/assets/images/logos/angular/angular.svg" alt="Angular" height="40">
+      </a>
+      <a href="https://getbootstrap.com/" target="_blank" rel="noopener noreferrer" [title]="t('bootstrapLink')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg" alt="Bootstrap" height="40">
+      </a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5" target="_blank" rel="noopener noreferrer" [title]="t('html5Link')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" alt="HTML5" height="40">
+      </a>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3" target="_blank" rel="noopener noreferrer" [title]="t('css3Link')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" alt="CSS3" height="40">
+      </a>
+    </div>
+    <span class="copyright-text">&copy; {{ currentYear }} | {{ t('developedBy') }} <strong>Frederick Marques</strong></span>
+  </div>
+</footer>
+
+<!-- Botão Voltar ao Topo -->
+@if (showScrollButton()) {
+  <button (click)="scrollToTop()" class="scroll-to-top-btn">
+    <i class="bi bi-arrow-up-circle-fill"></i>
+  </button>
+}
+

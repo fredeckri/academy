@@ -1,0 +1,56 @@
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e7e7e7;
+}
+
+.tech-icons a {
+  margin: 0 15px;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+.tech-icons a:hover {
+  transform: scale(1.1);
+}
+
+.copyright-text {
+  font-size: 1.1rem;
+  color: #f8f9fa; /* Alterado para combinar com o fundo escuro */
+  font-weight: 300;
+}
+
+.copyright-text strong {
+  font-weight: 600;
+  color: #ffffff; /* Alterado para combinar com o fundo escuro */
+}
+
+/* Estilos para o botão Voltar ao Topo */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1050;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  opacity: 1;
+}
+
+.scroll-to-top-btn:hover {
+  transform: scale(1.1);
+  background-color: #0b5ed7;
+}
+
+.scroll-to-top-btn i {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+

@@ -1,0 +1,51 @@
+<div>
+  <h2 class="mb-4">{{ t("shoppingCart") }}</h2>
+  @if (cart.cart().length === 0) {
+  <div class="text-center">
+    <p class="lead">{{ t("emptyCart") }}</p>
+    <a routerLink="/" class="btn btn-primary">{{ t("home") }}</a>
+  </div>
+  } @else {
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col">{{ t("product") }}</th>
+        <th scope="col" class="text-center">{{ t("quantity") }}</th>
+        <th scope="col" class="text-end">{{ t("price") }}</th>
+        <th scope="col" class="text-end">{{ t("total") }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for(item of cart.cart(); track item.id){
+      <tr>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+              [src]="item.image"
+              style="
+                width: 50px;
+                height: 50px;
+                object-fit: contain;
+                margin-right: 1rem;
+              "
+            />
+            {{ item.name }}
+          </div>
+        </td>
+        <td class="text-center">{{ item.quantity }}</td>
+        <td class="text-end">{{ formatCurrency(item.price) }}</td>
+        <td class="text-end">
+          {{ formatCurrency(item.price * item.quantity) }}
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <div class="text-end mt-4">
+    <h4>{{ t("total") }}: {{ formatCurrency(cart.total()) }}</h4>
+    <a routerLink="/payment" class="btn btn-success mt-2">{{
+      t("checkout")
+    }}</a>
+  </div>
+  }
+</div>

@@ -1,0 +1,29 @@
+ <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+      <div class="container">
+        <a class="navbar-brand" routerLink="/"><i class="bi bi-shop"></i> E-Shop</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item"><a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{ t('home') }}</a></li>
+            @if (auth.isAdmin()) {
+              <li class="nav-item"><a class="nav-link" routerLink="/product/add" routerLinkActive="active">{{ t('addProduct') }}</a></li>
+            }
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="bi bi-translate"></i> {{ currentLang() }}</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" (click)="$event.preventDefault(); setLocale('pt')">Português</a></li>
+                <li><a class="dropdown-item" href="#" (click)="$event.preventDefault(); setLocale('en')">English</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link" routerLink="/cart"><i class="bi bi-cart-fill"></i> {{ t('cart') }} @if (cart.itemCount() > 0) { <span class="badge bg-primary rounded-pill">{{ cart.itemCount() }}</span> }</a></li>
+            @if (!auth.isLoggedIn()) {
+              <li class="nav-item"><a class="btn btn-outline-primary" routerLink="/login">{{ t('login') }}</a></li>
+            } @else {
+              <li class="nav-item"><button class="btn btn-primary" (click)="handleLogout()">{{ t('logout') }}</button></li>
+            }
+          </ul>
+        </div>
+      </div>
+    </nav>

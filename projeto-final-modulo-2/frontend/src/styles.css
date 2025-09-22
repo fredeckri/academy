@@ -1,0 +1,16 @@
+
+body { background-color: #f8f9fa; }
+.navbar { box-shadow: 0 2px 4px rgba(0,0,0,.1); }
+.product-card { transition: transform .2s ease-in-out, box-shadow .2s ease-in-out; height: 100%; display: flex; flex-direction: column; }
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,.15); }
+.card-img-top { width: 100%; height: 200px; object-fit: contain; padding: 1rem; }
+.card-body { flex-grow: 1; display: flex; flex-direction: column; }
+.card-title { font-weight: bold; }
+.card-text { flex-grow: 1; }
+.card-footer { background-color: transparent; border-top: none; }
+.price { font-size: 1.25rem; font-weight: bold; color: #28a745; }
+.btn-icon { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; }
+.img-preview { max-width: 200px; max-height: 200px; margin-top: 1rem; border-radius: .375rem; }
+.loading-spinner { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1050; }
+.form-container { max-width: 600px; margin: auto; background: white; padding: 2rem; border-radius: .5rem; box-shadow: 0 2px 10px rgba(0,0,0,.1); }
+.banner { background-color: #e9ecef; }

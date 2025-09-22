@@ -1,0 +1,25 @@
+.footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e7e7e7;
+}
+
+.tech-icons a {
+  margin: 0 15px;
+  display: inline-block;
+  transition: transform 0.2s ease-in-out;
+}
+
+.tech-icons a:hover {
+  transform: scale(1.1);
+}
+
+.copyright-text {
+  font-size: 1.1rem;
+  color: #6c757d;
+  font-weight: 300;
+}
+
+.copyright-text strong {
+  font-weight: 600;
+  color: #343a40;
+}

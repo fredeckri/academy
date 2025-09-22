@@ -1,0 +1,19 @@
+/* Estilo para as abas de seleção de pagamento */
+.nav-pills .nav-link {
+  cursor: pointer;
+  color: #495057;
+}
+
+.nav-pills .nav-link.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+/* Container do QR Code */
+.qr-code-container {
+  display: inline-block;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  background-color: #fff;
+}

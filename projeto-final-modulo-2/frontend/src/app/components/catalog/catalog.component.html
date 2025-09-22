@@ -1,0 +1,60 @@
+<div>
+  <div class="p-5 mb-4 banner rounded-3">
+    <div class="container-fluid py-5">
+      <h1 class="display-5 fw-bold">Rick Produtos e Utilidades</h1>
+      <p class="col-md-8 fs-4">
+        Encontre tudo o que precisa, do eletrônico mais moderno aos itens
+        essenciais para o dia a dia. Qualidade e confiança em um só lugar.
+      </p>
+    </div>
+  </div>
+  <div class="row g-4">
+    @for(product of products(); track product.id){
+    <div class="col-12 col-sm-6 col-lg-4">
+      <div class="card product-card">
+        <img
+          [src]="product.image"
+          class="card-img-top"
+          [alt]="product.name"
+          (error)="onImageError($event)"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text text-muted small">
+            {{ product.description.substring(0, 100) }}...
+          </p>
+        </div>
+        <div
+          class="card-footer d-flex justify-content-between align-items-center"
+        >
+          <p class="price mb-0">{{ formatCurrency(product.price) }}</p>
+          <div class="d-flex gap-2">
+            <button
+              class="btn btn-success btn-icon"
+              [title]="t('addToCart')"
+              (click)="addToCart(product)"
+            >
+              <i class="bi bi-cart-plus"></i>
+            </button>
+            @if(auth.isAdmin()){
+            <a
+              [routerLink]="['/product/edit', product.id]"
+              class="btn btn-primary btn-icon"
+              [title]="t('edit')"
+              ><i class="bi bi-pencil-square"></i
+            ></a>
+            <button
+              class="btn btn-danger btn-icon"
+              [title]="t('remove')"
+              (click)="confirmDelete(product)"
+            >
+              <i class="bi bi-trash"></i>
+            </button>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

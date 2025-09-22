@@ -1,0 +1,79 @@
+<div class="form-container">
+  @if (!paymentSuccess()) {
+    <h2 class="text-center mb-4">{{ t('paymentGateway') }}</h2>
+    
+    
+    <ul class="nav nav-pills nav-fill mb-4">
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="paymentMethod() === 'card'" (click)="selectPaymentMethod('card')">
+          <i class="bi bi-credit-card-fill me-2"></i>{{ t('creditCard') }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [class.active]="paymentMethod() === 'pix'" (click)="selectPaymentMethod('pix')">
+          <i class="bi bi-qr-code me-2"></i>{{ t('pix') }}
+        </a>
+      </li>
+    </ul>
+
+    
+    @if (paymentMethod() === 'card') {
+      <form #f="ngForm" (ngSubmit)="processPayment()">
+        <div class="mb-3">
+          <label class="form-label">{{ t('cardNumber') }}</label>
+          <input type="text" class="form-control" required placeholder="0000 0000 0000 0000" [value]="cardNumber()" (input)="formatCardNumber($event)">
+        </div>
+        <div class="mb-3">
+          <label class="form-label">{{ t('cardHolder') }}</label>
+          <input type="text" class="form-control" required placeholder="Nome Completo">
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label class="form-label">{{ t('expiryDate') }}</label>
+            <input type="text" class="form-control" required placeholder="MM/AA">
+          </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">{{ t('cvv') }}</label>
+            <input type="text" class="form-control" required placeholder="123">
+          </div>
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success" [disabled]="f.invalid">{{ t('payNow') }}</button>
+        </div>
+      </form>
+    }
+
+    
+    @if (paymentMethod() === 'pix') {
+      <div class="text-center">
+        <h5>{{ t('scanQRCode') }}</h5>
+        @if(pixQRCode()){
+          <div class="qr-code-container my-3">
+            <img [src]="pixQRCode()" alt="PIX QR Code">
+          </div>
+        }
+        <p>{{ t('orCopyCode') }}</p>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" [value]="pixCode()" readonly>
+          <button class="btn btn-outline-secondary" type="button" (click)="copyPixCode()">
+            @if(!showCopiedMessage()){
+              <span><i class="bi bi-clipboard"></i> {{ t('copyCode') }}</span>
+            } @else {
+              <span><i class="bi bi-check-lg"></i> {{ t('codeCopied') }}</span>
+            }
+          </button>
+        </div>
+        <div class="d-grid mt-4">
+          <button class="btn btn-success" (click)="processPayment()">{{ t('payNow') }}</button>
+        </div>
+      </div>
+    }
+  } @else {
+    
+    <div class="text-center">
+      <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+      <h3 class="mt-3">{{ t('paymentSuccess') }}</h3>
+      <a routerLink="/" class="btn btn-primary mt-3">{{ t('backToHome') }}</a>
+    </div>
+  }
+</div>

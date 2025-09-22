@@ -1,0 +1,43 @@
+<div class="form-container">
+  <h2 class="text-center mb-4">{{ t("register") }}</h2>
+  <form #f="ngForm" (ngSubmit)="handleRegister()">
+    @if(error()){
+    <div class="alert alert-danger">{{ error() }}</div>
+    }
+    <div class="mb-3">
+      <label for="name" class="form-label">{{ t("name") }}</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        [(ngModel)]="form.name"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">{{ t("email") }}</label>
+      <input
+        type="email"
+        class="form-control"
+        name="email"
+        [(ngModel)]="form.email"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">{{ t("password") }}</label>
+      <input
+        type="password"
+        class="form-control"
+        name="password"
+        [(ngModel)]="form.password"
+        required
+      />
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary" [disabled]="f.invalid">
+        {{ t("register") }}
+      </button>
+    </div>
+  </form>
+</div>
