@@ -10,7 +10,7 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const PORT = 3000;
-const JWT_SECRET = `testes(*#$&@#(*$@)(#$_)@#($)_#(@$))`;
+const JWT_SECRET = `testestestes*-+*-/-*/+9/+*/-*/-*/98494-*/-*/-*/`;
 
 // --- Middlewares ---
 app.use(cors());
